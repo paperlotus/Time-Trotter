@@ -1,0 +1,201 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+GET     /deploy                     controllers.Application.deployment()
+GET     /accessDeny                 controllers.Application.restrictedPage()
+GET     /set                        controllers.Application.setPassword()
+
+#Login Module
+GET     /login                  	controllers.Application.login()
+POST    /login                      controllers.Application.authenticate()
+
+#Logout
+GET     /logout                     controllers.Application.logout()
+
+#User Registration
+GET		/registration				controllers.Application.registration()
+POST	/registration				controllers.Application.createAccount()
+POST	/checkUserEmail				controllers.Application.checkUserEmailAvailability()
+POST	/checkPassword				controllers.Application.checkPassword()
+POST	/checkOldPassword			controllers.Application.checkOldPassword()
+POST	/changePassword				controllers.Application.changePassword()
+
+#Company Registration
+POST	/checkCompanyEmail			controllers.Application.checkCompanyEmailAvailability()
+
+# Leave Section
+GET 	/leaveIndex				    controllers.Leaves.applyIndex()
+GET     /leaveSearch				controllers.Leaves.search()
+GET     /leaveDelete				controllers.Leaves.delete()
+POST    /leaveCreate				controllers.Leaves.create()
+POST    /leaveEdit				    controllers.Leaves.edit()
+GET		/leavesShowEdit 			controllers.Leaves.showEdit()
+GET		/leaveApprovalViaMail		controllers.Leaves.leaveApprovalViaMail()
+GET		/leaveExcelReport			controllers.Leaves.excelReport()
+GET		/leaveApplyExcelReport		controllers.Leaves.excelApplyReport()
+
+# LeaveBucket
+GET		/leave/bucketIndex		     	controllers.Leaves.bucketIndex()
+GET		/leave/bucketSearch		        controllers.Leaves.leaveSearch()
+GET		/leave/approveLeave				controllers.Leaves.approveLeave()
+GET		/leave/rejectLeave				controllers.Leaves.rejectLeave()
+GET		/leave/retractLeave				controllers.Leaves.retractLeave()
+
+#Forgot Password
+GET	   /finduserid					controllers.Application.finduser()
+GET	   /forgot					    controllers.Application.forgotpassword()
+
+#Company Registration
+GET     /register                   controllers.Application.companyregistration()
+GET     /complete                   controllers.Application.companycreateAccount()
+GET     /companysearch              controllers.Application.companysearch(q:String)
+POST	/checkCompanyCode			controllers.Application.checkCompanyCodeAvailability()
+POST	/checkCompanyName			controllers.Application.checkCompanyNameAvailability()
+
+#User
+GET     /userSearch					controllers.Users.search()
+GET     /userDelete					controllers.Users.delete()
+POST    /userCreate					controllers.Users.create()
+POST    /userEdit					controllers.Users.edit()
+GET 	/userIndex					controllers.Users.index()
+GET		/findHRUser					controllers.Users.findHRUser()
+GET		/findcompanyuser			controllers.Users.getCompanyUser()
+GET		/findManagerUser			controllers.Users.findManagerUser()
+GET		/findPM						controllers.Users.findProjectManagers()
+GET		/userShowEdit 				controllers.Users.showEdit()
+GET		/userGenericSearchIndex		controllers.UserSearch.index()
+GET		/userGenericDoSearch		controllers.UserSearch.search()
+POST	/emailAvailability      	controllers.Users.emailAvailability()
+POST	/idAvailability 	     	controllers.Users.idAvailability()
+GET		/userExcelReport			controllers.Users.excelReport()
+GET		/findDelegatedTo			controllers.Users.findDelegateTos()
+
+# Project 
+GET 	/projectIndex				controllers.Projects.index()
+GET     /projectSearch				controllers.Projects.search()
+GET     /projectDelete				controllers.Projects.delete()
+POST    /projectCreate				controllers.Projects.create()
+POST    /projectEdit				controllers.Projects.edit()
+GET		/findClient					controllers.Clients.findClients()
+GET		/projectShowEdit 			controllers.Projects.showEdit()
+POST	/projectCodeAvailability	controllers.Projects.checkProjectCodeAvailability()
+GET		/projectExcelReport			controllers.Projects.excelReport()
+
+# Task 
+GET 	/taskIndex				controllers.Tasks.index()
+GET     /taskSearch				controllers.Tasks.search()
+GET     /taskDelete				controllers.Tasks.delete()
+POST    /taskCreate				controllers.Tasks.create()
+POST    /taskEdit				controllers.Tasks.edit()
+GET		/projectByName			controllers.Tasks.findProjectByName()
+GET		/taskShowEdit 			controllers.Tasks.showEdit()
+GET		/taskExcelReport		controllers.Tasks.excelReport()
+
+# Client 
+GET 	/clientIndex			controllers.Clients.index()
+GET     /clientSearch			controllers.Clients.search()
+GET     /clientDelete			controllers.Clients.delete()
+POST    /clientCreate			controllers.Clients.create()
+POST    /clientEdit				controllers.Clients.edit()
+GET		/clientShowEdit 		controllers.Clients.showEdit()
+GET		/clientExcelReport		controllers.Clients.excelReport()
+
+# Timesheet
+GET     /timesheetIndex             		controllers.Timesheets.index()
+GET     /timesheetSearchIndex          		controllers.Timesheets.searchIndex()
+POST    /timesheetCreate             		controllers.Timesheets.create()
+POST    /timesheetCancel             		controllers.Timesheets.cancel()
+GET		/timesheet/getTaskCode				controllers.Timesheets.getTaskCodes(_value:String)
+GET		/timesheet/getTimesheetTable		controllers.Timesheets.getTimesheetTable(id:String,week:String,year:String)
+GET		/timesheet/getLastWeekTimesheet		controllers.Timesheets.getLastWeekTimesheet(week:Integer,year:Integer)
+GET     /TimesheetSearch					controllers.Timesheets.search()
+GET    	/timesheetEdit/:id         			controllers.Timesheets.editTimesheet(id:String)
+GET		/timesheetExcelReport				controllers.Timesheets.excelReport()
+GET     /retractTimesheet           		controllers.Timesheets.retractTimesheet()
+
+# TimesheetBucket
+GET		/timesheet/bucketIndex		        controllers.TimesheetBuckets.index()
+GET		/timesheet/bucketSearch		        controllers.TimesheetBuckets.search()
+GET		/timesheet/displayTimesheet			controllers.TimesheetBuckets.displaySelectedTimesheet(query:String)
+GET		/timesheet/approveTimesheets		controllers.TimesheetBuckets.approveTimesheets
+GET		/timesheet/rejectTimesheets			controllers.TimesheetBuckets.rejectTimesheets
+GET	    /timesheet/approveTimesheetsOk		controllers.TimesheetBuckets.approveTimesheetsOk(id:String)
+GET	    /timesheet/rejectTimesheetsOk		controllers.TimesheetBuckets.rejectTimesheetsOk(id:String)
+GET		/timesheetBucketExcelReport			controllers.TimesheetBuckets.excelReport()
+GET		/timesheetApprovalViaMail			controllers.Timesheets.timeSheetApprovalViaMail()
+
+# Feedback
+GET     /feedback/view         				controllers.Feedbacks.index()
+GET     /feedback/create       				controllers.Feedbacks.customIndex()
+GET     /feedback/customSearchIndex        	controllers.Feedbacks.customSearchIndex()
+GET     /feedbackCreate        				controllers.Feedbacks.create()
+POST	/submitFeedback						controllers.Feedbacks.submit()
+GET     /feedback/searchIndex          		controllers.Feedbacks.searchIndex()
+GET     /feedbackDisplay       				controllers.Feedbacks.display()
+
+# User Permission
+GET		/permissionIndex					controllers.UserPermissions.index()
+GET		/permissionsearch					controllers.UserPermissions.getUserList()
+POST	/permission/update					controllers.UserPermissions.update()
+POST	/permission/save					controllers.UserPermissions.save()
+GET		/rolepermissionIndex				controllers.RolePermissions.index()
+GET		/rolepermissionsearch				controllers.RolePermissions.getRoleList()
+POST	/rolepermission/update				controllers.RolePermissions.update()
+POST	/rolepermission/save				controllers.RolePermissions.save()
+
+# Status
+GET		/userStatusIndex					controllers.Status.userIndex()
+GET		/userStatusSearch					controllers.Status.userSearch()
+GET		/userStatusApprove					controllers.Status.approveUserStatus(query:String)
+GET		/userStatusdisapprove				controllers.Status.disapproveUserStatus(query:String)
+GET		/userStatusExcelReport				controllers.Status.excelReportUser()
+GET		/companyStatusIndex					controllers.Status.companyIndex()
+GET		/companyStatusSearch				controllers.Status.companySearch()
+GET		/companyStatusApprove				controllers.Status.approveCompanyStatus(query:String)
+GET		/companyStatusDisapprove			controllers.Status.disapproveCompanyStatus(query:String)
+GET		/companyStatusExcelReport			controllers.Status.excelReportCompany()
+
+#Mail
+GET 	/mailIndex							controllers.Mail.index() 
+POST	/mailSave							controllers.Mail.settingSave()
+
+#Timesheet Notification
+GET 	/notificationIndex					controllers.Notifications.index()
+POST	/notificationSave					controllers.Notifications.save()
+
+# Delegate
+GET		/delegateIndex			   			controllers.Delegate.index()
+GET		/delagationSave						controllers.Delegate.save()
+
+# Role
+GET 	/roleIndex						controllers.Roles.index()
+GET     /roleSearch						controllers.Roles.search()
+GET     /roleDelete						controllers.Roles.delete()
+POST    /roleCreate						controllers.Roles.create()
+POST    /roleEdit						controllers.Roles.edit()
+GET		/roleShowEdit 					controllers.Roles.showEdit()
+GET 	/defineRoles					controllers.Roles.defineRoles()
+GET 	/showRoles						controllers.Roles.showRoles()
+POST	/saveRole						controllers.Roles.saveRole()
+POST	/saveOrg						controllers.Roles.saveRole()
+
+# Report
+GET		/reportIndex			   			controllers.Reports.teamRateIndex()
+GET     /reportSearch						controllers.Reports.teamRateSearch()
+
+#Project Report
+GET		/projReportIndex					controllers.ProjectReports.projectReportIndex()
+GET		/projReportSearch					controllers.ProjectReports.projectReportSearch()
+GET		/projViewDetails					controllers.ProjectReports.viewProjectDetails()
+GET		/viewGraph							controllers.ProjectReports.viewGraph()
+GET		/projViewGraphHrs					controllers.ProjectReports.viewUsageByHrs(id:String)
+
+#Project Details
+GET		/projDetailsIndex					controllers.ProjectSearch.index()
+GET		/projDetailsSearch					controllers.ProjectSearch.search()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
